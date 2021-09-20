@@ -27,17 +27,17 @@ def test_compareMeans():
     mean2 = dataSet2[comparedCol].mean()
     correctAnswer = mean1-mean2
     #print(correctAnswer == solution_file.compareTwoMeans())
-    assert correctAnswer == solution_file.compareTwoMeans() 
+    assert correctAnswer == solution_file.compareTwoMeans(df_in,comparedCol,splitCol,group1,group2) 
 
 @pytest.mark.q2
 def test_compareMedians():
     dataSet1 = df_in[df_in[splitCol]==group1]
     dataSet2 = df_in[df_in[splitCol]==group2]
-    mean1 = dataSet1[comparedCol].mean()
-    mean2 = dataSet2[comparedCol].mean()
+    mean1 = dataSet1[comparedCol].median()
+    mean2 = dataSet2[comparedCol].median()
     correctAnswer = mean1-mean2
     #print(correctAnswer == solution_file.compareTwoMedians())
-    assert correctAnswer == solution_file.compareTwoMedians()
+    assert correctAnswer == solution_file.compareTwoMedians(df_in,comparedCol,splitCol,group1,group2)
 
 #def test_countMeetsCutoff(df_in, columnUsed, metric, isOver):
 @pytest.mark.q3
@@ -50,4 +50,4 @@ def test_countMeetsCutoff():
         filteredCol = columnToCheck[columnToCheck[columnUsed] < metric]
         correctAnswer = filteredCol.size
     #print(correctAnswer == solution_file.countMeetsCutoff())
-    assert correctAnswer == solution_file.countMeetsCutoff()
+    assert correctAnswer == solution_file.countMeetsCutoff(df_in,columnUsed, metric,isOver)
